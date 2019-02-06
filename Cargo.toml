@@ -1,0 +1,13 @@
+[package]
+name = "minibrotli"
+version = "0.1.0-devel"
+edition = "2018"
+authors = ["Peter Jin <peterhaijin@gmail.com>"]
+
+[features]
+default = []
+fresh = ["bindgen"]
+
+[build-dependencies]
+bindgen = { version = "^0.47", optional = true }
+cc = "^1.0"
