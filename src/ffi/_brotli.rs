@@ -60,7 +60,6 @@ pub const BROTLI_DECODER_PARAM_DISABLE_RING_BUFFER_REALLOCATION: BrotliDecoderPa
 pub const BROTLI_DECODER_PARAM_LARGE_WINDOW: BrotliDecoderParameter = 1;
 pub type BrotliDecoderParameter = u32;
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderSetParameter"]
     pub fn BrotliDecoderSetParameter(
         state: *mut BrotliDecoderState,
         param: BrotliDecoderParameter,
@@ -68,7 +67,6 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderCreateInstance"]
     pub fn BrotliDecoderCreateInstance(
         alloc_func: brotli_alloc_func,
         free_func: brotli_free_func,
@@ -76,11 +74,9 @@ extern "C" {
     ) -> *mut BrotliDecoderState;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderDestroyInstance"]
     pub fn BrotliDecoderDestroyInstance(state: *mut BrotliDecoderState);
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderDecompress"]
     pub fn BrotliDecoderDecompress(
         encoded_size: usize,
         encoded_buffer: *const u8,
@@ -89,7 +85,6 @@ extern "C" {
     ) -> BrotliDecoderResult;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderDecompressStream"]
     pub fn BrotliDecoderDecompressStream(
         state: *mut BrotliDecoderState,
         available_in: *mut usize,
@@ -100,31 +95,24 @@ extern "C" {
     ) -> BrotliDecoderResult;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderHasMoreOutput"]
     pub fn BrotliDecoderHasMoreOutput(state: *const BrotliDecoderState) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderTakeOutput"]
     pub fn BrotliDecoderTakeOutput(state: *mut BrotliDecoderState, size: *mut usize) -> *const u8;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderIsUsed"]
     pub fn BrotliDecoderIsUsed(state: *const BrotliDecoderState) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderIsFinished"]
     pub fn BrotliDecoderIsFinished(state: *const BrotliDecoderState) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderGetErrorCode"]
     pub fn BrotliDecoderGetErrorCode(state: *const BrotliDecoderState) -> BrotliDecoderErrorCode;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderErrorString"]
     pub fn BrotliDecoderErrorString(c: BrotliDecoderErrorCode) -> *const ::std::os::raw::c_char;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliDecoderVersion"]
     pub fn BrotliDecoderVersion() -> u32;
 }
 pub const BROTLI_MODE_GENERIC: BrotliEncoderMode = 0;
@@ -153,7 +141,6 @@ pub struct BrotliEncoderStateStruct {
 }
 pub type BrotliEncoderState = BrotliEncoderStateStruct;
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderSetParameter"]
     pub fn BrotliEncoderSetParameter(
         state: *mut BrotliEncoderState,
         param: BrotliEncoderParameter,
@@ -161,7 +148,6 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderCreateInstance"]
     pub fn BrotliEncoderCreateInstance(
         alloc_func: brotli_alloc_func,
         free_func: brotli_free_func,
@@ -169,15 +155,12 @@ extern "C" {
     ) -> *mut BrotliEncoderState;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderDestroyInstance"]
     pub fn BrotliEncoderDestroyInstance(state: *mut BrotliEncoderState);
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderMaxCompressedSize"]
     pub fn BrotliEncoderMaxCompressedSize(input_size: usize) -> usize;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderCompress"]
     pub fn BrotliEncoderCompress(
         quality: ::std::os::raw::c_int,
         lgwin: ::std::os::raw::c_int,
@@ -189,7 +172,6 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderCompressStream"]
     pub fn BrotliEncoderCompressStream(
         state: *mut BrotliEncoderState,
         op: BrotliEncoderOperation,
@@ -201,18 +183,14 @@ extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderIsFinished"]
     pub fn BrotliEncoderIsFinished(state: *mut BrotliEncoderState) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderHasMoreOutput"]
     pub fn BrotliEncoderHasMoreOutput(state: *mut BrotliEncoderState) -> ::std::os::raw::c_int;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderTakeOutput"]
     pub fn BrotliEncoderTakeOutput(state: *mut BrotliEncoderState, size: *mut usize) -> *const u8;
 }
 extern "C" {
-    #[link_name = "\u{1}_BrotliEncoderVersion"]
     pub fn BrotliEncoderVersion() -> u32;
 }

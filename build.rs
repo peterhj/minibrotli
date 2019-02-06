@@ -18,6 +18,7 @@ fn gen_bindings() {
   bindgen::Builder::default()
     .clang_arg(format!("-I{}", manifest_dir.join("brotli/c/include").display()))
     .header("wrapped_brotli.h")
+    .trust_clang_mangling(false)
     .whitelist_recursively(false)
     .whitelist_type("brotli_alloc_func")
     .whitelist_type("brotli_free_func")

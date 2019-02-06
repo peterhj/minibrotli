@@ -45,7 +45,7 @@ impl BrotliEncoder {
 
   pub fn compress(&mut self, input_buf: &[u8], output_buf: &mut [u8]) -> Result<usize, ()> {
     // TODO: compression parameters.
-    let mut enc_output_sz: usize = 0;
+    let mut enc_output_sz: usize = output_buf.len();
     let ret = unsafe { BrotliEncoderCompress(
         6, BROTLI_DEFAULT_WINDOW as i32, BROTLI_MODE_GENERIC,
         input_buf.len(),
@@ -57,6 +57,22 @@ impl BrotliEncoder {
     match ret {
       0 => Err(()),
       1 => Ok(enc_output_sz),
+      _ => panic!(),
+    }
+  }
+
+  pub fn is_finished(&mut self) -> bool {
+    match unsafe { BrotliEncoderIsFinished(self.state) } {
+      0 => false,
+      1 => true,
+      _ => panic!(),
+    }
+  }
+
+  pub fn has_more_output(&mut self) -> bool {
+    match unsafe { BrotliEncoderHasMoreOutput(self.state) } {
+      0 => false,
+      1 => true,
       _ => panic!(),
     }
   }
