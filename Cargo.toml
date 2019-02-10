@@ -3,6 +3,7 @@ name = "minibrotli"
 version = "0.1.0-devel"
 edition = "2018"
 authors = ["Peter Jin <peterhaijin@gmail.com>"]
+license = "Apache-2.0 OR MIT"
 
 [features]
 default = []
